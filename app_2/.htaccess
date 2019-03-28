@@ -1,0 +1,9 @@
+#FOR APP_1 FOLDER
+RewriteEngine On
+    # If an existing asset or directory is requested go to it as it is
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+    RewriteRule ^ - [L]
+    # If the requested resource doesn't exist, use /app_1/index.html
+    # Now with this rule we can redirect the request to use index.html when we are reaching in the subfolder
+    RewriteRule ^ /app_1/index.html [NC,L]

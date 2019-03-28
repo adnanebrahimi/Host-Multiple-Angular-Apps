@@ -1,0 +1,11 @@
+# FOR ROOT FOLDER
+RewriteEngine On
+    # If an existing asset or directory is requested go to it as it is
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -f [OR]
+    RewriteCond %{DOCUMENT_ROOT}%{REQUEST_URI} -d
+    RewriteRule ^ - [L]
+    # If the requested resource doesn't exist, use index.html
+    # We can redirect requests from root folder to subfolder with this rules
+    # in this config we have 3 angular apps in same domain:
+    RewriteRule ^app_1/. /app_1/index.html [NC,L]
+    RewriteRule ^app_2/. /app_2/index.html [NC,L]
